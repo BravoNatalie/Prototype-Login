@@ -1,7 +1,8 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import color from '../../styles/colors';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
+//const screenHeight = Math.round(Dimensions.get('window').height);
 
 export default StyleSheet.create({
   container: {
@@ -31,25 +32,29 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  quizContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginTop: '15%',
+  },
   questionText: {
     fontFamily: 'Lato',
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#05CFE0',
-    marginTop: '15%',
+    color: color.primary,
   },
   inputAnswer: {
-    marginTop: '20%',
+    marginTop: '17%',
     fontFamily: 'Lato',
     fontSize: 15,
-    color: '#05CFE0',
+    color: color.primary,
     borderRadius: 25,
-    paddingHorizontal: '30%',
+    paddingHorizontal: '35%',
     paddingVertical: '7%',
     backgroundColor: 'rgba(5, 207, 224,0.1)',
   },
   button: {
     width: screenWidth * 0.12,
-    marginTop: '2%',
   },
 });

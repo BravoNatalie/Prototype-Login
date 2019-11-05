@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 
 import {
   Text,
@@ -13,6 +13,8 @@ import {
 
 import componentStyle from './styles';
 import color from '../../styles/colors';
+
+import QuizLogin from './quizLogin';
 
 const Login = () => (
   <KeyboardAvoidingView style={componentStyle.container}>
@@ -37,19 +39,7 @@ const Login = () => (
       />
     </ImageBackground>
     <View style={componentStyle.textContainer}>
-      <Text style={componentStyle.questionText}>Quem é você?</Text>
-      <TextInput
-        style={componentStyle.inputAnswer}
-        placeholder={'Nome'}
-        placeholderTextColor="rgba(5, 207, 224,0.4)"
-      />
-      <TouchableOpacity>
-        <Image
-          style={componentStyle.button}
-          source={require('../../assets/Login/Buttons/button_OK.png')}
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
+      <QuizLogin />
     </View>
   </KeyboardAvoidingView>
 );
