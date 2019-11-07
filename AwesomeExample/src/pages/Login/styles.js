@@ -37,6 +37,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     marginTop: '15%',
+    marginHorizontal: '15%',
   },
   questionText: {
     fontFamily: 'Lato',
@@ -56,5 +57,9 @@ export default StyleSheet.create({
   },
   button: {
     width: screenWidth * 0.12,
+    marginHorizontal: 15,
   },
+  multipleChoiseButton:{
+    width: screenWidth * 0.9,
+  }
 });

@@ -1,13 +1,11 @@
-import React, { useState }  from 'react';
+import React from 'react';
 
 import {
   Text,
   Image,
   ImageBackground,
-  TouchableOpacity,
   StatusBar,
   View,
-  TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
 

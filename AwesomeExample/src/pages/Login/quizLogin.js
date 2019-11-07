@@ -1,7 +1,71 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 
 import componentStyle from './styles';
+
+function YesNoAnswer(props) {
+  return (
+    <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
+      <TouchableOpacity>
+        <Image
+          style={componentStyle.button}
+          source={require('../../assets/Login/Buttons/button_sim.png')}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image
+          style={componentStyle.button}
+          source={require('../../assets/Login/Buttons/button_nao.png')}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function MultipleChoiceAnswer() {
+  return (
+    <View>
+      <TouchableOpacity>
+        <Image
+          style={componentStyle.multipleChoiseButton}
+          source={require('../../assets/Login/Buttons/fundo_alternativas_1.png')}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+      <Text>blabla</Text>
+    </View>
+  );
+}
+
+function TextAnswer(props) {
+  return (
+    <>
+      <TextInput
+        style={componentStyle.inputAnswer}
+        placeholder={'Digite aqui...'}
+        placeholderTextColor="rgba(5, 207, 224,0.4)"
+        value={props.value}
+        onChangeText={props.setValue}
+      />
+      <TouchableOpacity onPress={props.okAnswer}>
+        <Image
+          style={componentStyle.button}
+          source={require('../../assets/Login/Buttons/button_OK.png')}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+    </>
+  );
+}
 
 export default function QuizLogin() {
   const [value, setValue] = useState('');
@@ -11,26 +75,22 @@ export default function QuizLogin() {
     if (value.length > 0) {
       setAnswers([...answers, {text: value, key: Date.now()}]);
       setValue('');
+      console.warn(answers);
     }
   }
 
   return (
     <View style={componentStyle.quizContainer}>
-      <Text style={componentStyle.questionText}>Quem é você?</Text>
-      <TextInput
-        style={componentStyle.inputAnswer}
-        placeholder={'Nome'}
-        placeholderTextColor="rgba(5, 207, 224,0.4)"
+      <Text style={componentStyle.questionText}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+      </Text>
+      {/* <TextAnswer
         value={value}
-        onChangeText={value => setValue(value)}
-      />
-      <TouchableOpacity onPress={() => okAnswer()}>
-        <Image
-          style={componentStyle.button}
-          source={require('../../assets/Login/Buttons/button_OK.png')}
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
+        setValue={value => setValue(value)}
+        okAnswer={() => okAnswer()}
+      /> */}
+      {/* <YesNoAnswer /> */}
+      <MultipleChoiceAnswer />
     </View>
   );
 }
