@@ -5635,6 +5635,11 @@ react-native-gesture-handler@^1.4.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-image-button-text@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-image-button-text/-/react-native-image-button-text-1.0.7.tgz#08aba24e05ea2109e5fe3f2baec872d068ac35be"
+  integrity sha512-U5tPevX0iMgicdF6Mffm+jeflyZKB0eNNClQynn4riByCqJn+HY8VFYOPC8qZChSJMVc/ml43ci3reaPje3Ltg==
+
 react-native-iphone-x-helper@^1.0.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"

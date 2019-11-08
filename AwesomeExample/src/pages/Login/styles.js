@@ -59,7 +59,41 @@ export default StyleSheet.create({
     width: screenWidth * 0.12,
     marginHorizontal: 15,
   },
-  multipleChoiseButton:{
+  multipleChoiseButtonImage: {
+    width: screenWidth * 0.8,
+  },
+  multipleChoiseContainer: {
+    width: '100%',
+    marginTop: '7%',
+  },
+  multipleChoiseView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: screenWidth * 0.9,
-  }
+  },
+  multipleChoiseButtonA: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: -37,
+    marginLeft:'-37%',
+    marginRight: '-39%',
+  },
+  multipleChoiseButtonB: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: -37,
+  },
+  multipleChoiseButtonText: {
+    position: 'absolute',
+    backgroundColor: 'transparent',
+  },
+  multipleChoiseResponseText: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#FFFFFF',
+  },
+  multipleChoiseTextOption: {
+    fontSize: 28,
+  },
 });
