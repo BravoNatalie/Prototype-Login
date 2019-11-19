@@ -46,13 +46,13 @@ export default StyleSheet.create({
     color: color.primary,
   },
   inputAnswer: {
-    marginTop: '17%',
+    marginTop: '25%',
     fontFamily: 'Lato',
     fontSize: 15,
     color: color.primary,
     borderRadius: 25,
     paddingHorizontal: '35%',
-    paddingVertical: '7%',
+    paddingVertical: 30,
     backgroundColor: 'rgba(5, 207, 224,0.1)',
   },
   button: {
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: -37,
-    marginLeft:'-37%',
+    marginLeft: '-37%',
     marginRight: '-39%',
   },
   multipleChoiseButtonB: {
@@ -95,5 +95,9 @@ export default StyleSheet.create({
   },
   multipleChoiseTextOption: {
     fontSize: 28,
+  },
+  errorMsg: {
+    marginTop: 40,
+    color: '#FF0000',
   },
 });

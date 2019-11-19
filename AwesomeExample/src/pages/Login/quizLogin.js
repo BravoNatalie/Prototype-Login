@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import componentStyle from './styles';
+import * as Animatable from 'react-native-animatable';
 
 function YesNoAnswer(props) {
   return (
@@ -123,11 +124,17 @@ function TextAnswer(props) {
     <>
       <TextInput
         style={componentStyle.inputAnswer}
+        autoCorrect={false}
         placeholder={'Digite aqui...'}
         placeholderTextColor="rgba(5, 207, 224,0.4)"
         onChangeText={props.setValue}
         value={props.value}
       />
+
+      <Text style={componentStyle.errorMsg}>
+        {props.error ? 'Resposta Incorreta!' : null}
+      </Text>
+
       <TouchableOpacity onPress={props.sendAnswer}>
         <Image
           style={componentStyle.button}
@@ -143,12 +150,14 @@ export default function QuizLogin() {
   const [value, setValue] = useState({});
   const [answers, setAnswers] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [question, setQuestion] = useState({});
+  const [error, setError] = useState(false);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+
+  const viewRef = useRef(null);
 
   useEffect(() => requestQuestions(), []);
 
-  const addr = '10.23.96.160';
+  const addr = '10.23.10.59';
 
   /*  function initLogin() {
     const uri = 'http://10.23.10.45:8000/api/auth/customers/login';
@@ -180,6 +189,11 @@ export default function QuizLogin() {
   }
 
   function sendAnswer(text) {
+    if (JSON.stringify(text) === JSON.stringify({})) {
+      bounce();
+      return null;
+    }
+
     const uri = `http://${addr}:8000/api/auth/quiz/login`;
 
     const request = {
@@ -195,8 +209,8 @@ export default function QuizLogin() {
         console.log(response);
         if (response.ok) return response;
         else {
-          let error = new Error(response.statusText);
-          error.response = response;
+          let error = new Error();
+          error.sender = 'validationError';
           throw error;
         }
       })
@@ -207,24 +221,42 @@ export default function QuizLogin() {
           {answer: text.answer, question_id: text.question_id},
         ]);
         setValue({});
+        setError(false);
         setActiveQuestionIndex(activeQuestionIndex + 1);
       })
-      .catch(e => console.error(e));
-  }
+      .catch(e => {
+        if (e.sender === 'validationError') {
+          setActiveQuestionIndex(0);
+          setError(true);
+          setValue({});
+          bounce();
+        } else {
+          console.error(e);
+        }
+      });
 
-  const exemplo = {text: 'Qual o seu nome%', id: 1};
+    function bounce() {
+      viewRef.current.bounce(800);
+    }
+  }
 
   return questions.map(
     (quest, index) =>
       activeQuestionIndex === index && (
-        <View style={componentStyle.quizContainer} key={quest.id}>
+        <Animatable.View
+          ref={viewRef}
+          style={componentStyle.quizContainer}
+          key={quest.id}>
           <Text style={componentStyle.questionText}>{quest.title}</Text>
           <TextAnswer
             setValue={text => setValue({answer: text, question_id: quest.id})}
             sendAnswer={() => sendAnswer(value)}
             value={value.answer}
+            setError={() => setError(true)}
+            error={error}
+            viewRef={viewRef}
           />
-        </View>
+        </Animatable.View>
       ),
   );
 }
