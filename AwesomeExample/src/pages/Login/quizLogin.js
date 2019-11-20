@@ -157,7 +157,7 @@ export default function QuizLogin() {
 
   useEffect(() => requestQuestions(), []);
 
-  const addr = '10.23.10.59';
+  const addr = '10.5.184.211';
 
   /*  function initLogin() {
     const uri = 'http://10.23.10.45:8000/api/auth/customers/login';
@@ -185,7 +185,7 @@ export default function QuizLogin() {
     fetch(uri, request)
       .then(response => response.json())
       .then(response => setQuestions(response))
-      .done();
+      .catch(e => console.error(e));
   }
 
   function sendAnswer(text) {

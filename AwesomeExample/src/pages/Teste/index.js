@@ -7,28 +7,6 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-import * as Animatable from 'react-native-animatable';
-
-/* export default function ExampleView() {
-  const handleViewRef = useRef(null);
-
-  const bounce = () =>
-    handleViewRef.current
-      .bounce(800)
-      .then(endState =>
-        console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'),
-      );
-
-  return (
-    <View>
-      <Animatable.View ref={handleViewRef}>
-        <TextInput placeholder="bouce me ..." />
-        <Button title="click" onPress={() => bounce()} />
-      </Animatable.View>
-    </View>
-  );
-} */
-
 /* efetuaLogin() {
     const uri = 'http://10.23.10.59:8000/api/auth/customers/login';
 

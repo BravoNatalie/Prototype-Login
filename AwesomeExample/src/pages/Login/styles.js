@@ -7,7 +7,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: color.white,
   },
   imageContainer: {
     flex: 0.455,
@@ -40,14 +40,14 @@ export default StyleSheet.create({
     marginHorizontal: '15%',
   },
   questionText: {
-    fontFamily: 'Lato',
+    fontFamily: 'Lato-Regular',
     fontSize: 20,
     fontWeight: 'bold',
     color: color.primary,
   },
   inputAnswer: {
     marginTop: '25%',
-    fontFamily: 'Lato',
+    fontFamily: 'Lato-Regular',
     fontSize: 15,
     color: color.primary,
     borderRadius: 25,
@@ -91,13 +91,13 @@ export default StyleSheet.create({
   multipleChoiseResponseText: {
     fontSize: 18,
     textAlign: 'center',
-    color: '#FFFFFF',
+    color: color.white,
   },
   multipleChoiseTextOption: {
     fontSize: 28,
   },
   errorMsg: {
     marginTop: 40,
-    color: '#FF0000',
+    color: color.error,
   },
 });
