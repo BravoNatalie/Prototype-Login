@@ -157,7 +157,7 @@ export default function QuizLogin() {
 
   useEffect(() => requestQuestions(), []);
 
-  const addr = '10.5.184.211';
+  const addr = '10.23.10.59';
 
   /*  function initLogin() {
     const uri = 'http://10.23.10.45:8000/api/auth/customers/login';
@@ -188,7 +188,8 @@ export default function QuizLogin() {
       .catch(e => console.error(e));
   }
 
-  function sendAnswer(text) {
+  function sendAnswer(text, isLast) {
+    console.log(isLast);
     if (JSON.stringify(text) === JSON.stringify({})) {
       bounce();
       return null;
@@ -206,7 +207,6 @@ export default function QuizLogin() {
 
     fetch(uri, request)
       .then(response => {
-        console.log(response);
         if (response.ok) return response;
         else {
           let error = new Error();
@@ -223,6 +223,7 @@ export default function QuizLogin() {
         setValue({});
         setError(false);
         setActiveQuestionIndex(activeQuestionIndex + 1);
+        if (isLast) console.log('última');
       })
       .catch(e => {
         if (e.sender === 'validationError') {
@@ -234,29 +235,42 @@ export default function QuizLogin() {
           console.error(e);
         }
       });
-
-    function bounce() {
-      viewRef.current.bounce(800);
-    }
   }
 
-  return questions.map(
-    (quest, index) =>
-      activeQuestionIndex === index && (
-        <Animatable.View
-          ref={viewRef}
-          style={componentStyle.quizContainer}
-          key={quest.id}>
-          <Text style={componentStyle.questionText}>{quest.title}</Text>
-          <TextAnswer
-            setValue={text => setValue({answer: text, question_id: quest.id})}
-            sendAnswer={() => sendAnswer(value)}
-            value={value.answer}
-            setError={() => setError(true)}
-            error={error}
-            viewRef={viewRef}
-          />
-        </Animatable.View>
-      ),
+  function bounce() {
+    viewRef.current.bounce(800);
+  }
+
+  const questionsLength = questions.length;
+
+  return (
+    <>
+      {questions.map(
+        (quest, index) =>
+          activeQuestionIndex === index && (
+            <Animatable.View
+              ref={viewRef}
+              style={componentStyle.quizContainer}
+              key={quest.id}>
+              <Text style={componentStyle.questionText}>{quest.title}</Text>
+              <TextAnswer
+                setValue={text =>
+                  setValue({answer: text, question_id: quest.id})
+                }
+                sendAnswer={
+                  questionsLength == index + 1
+                    ? () => sendAnswer(value, true)
+                    : () => sendAnswer(value, false)
+                }
+                value={value.answer}
+                setError={() => setError(true)}
+                error={error}
+                viewRef={viewRef}
+              />
+            </Animatable.View>
+          ),
+      )}
+      {activeQuestionIndex == questionsLength ? <Text>confirmar</Text> : null}
+    </>
   );
 }

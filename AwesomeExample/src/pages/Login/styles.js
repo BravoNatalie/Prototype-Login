@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 import color from '../../styles/colors';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
-//const screenHeight = Math.round(Dimensions.get('window').height);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export default StyleSheet.create({
     backgroundColor: color.white,
   },
   imageContainer: {
-    flex: 0.455,
+    flex: 0.462,
     resizeMode: 'contain',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -24,11 +24,11 @@ export default StyleSheet.create({
   },
   icon: {
     flex: 1,
-    width: screenWidth * 0.12,
+    width: screenWidth * 0.14,
     bottom: '-15%',
   },
   textContainer: {
-    flex: 0.545,
+    flex: 0.538,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
@@ -44,16 +44,19 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: color.primary,
+    textAlign: 'center',
   },
   inputAnswer: {
     marginTop: '25%',
     fontFamily: 'Lato-Regular',
     fontSize: 15,
+    width: screenWidth * 0.8,
     color: color.primary,
-    borderRadius: 25,
-    paddingHorizontal: '35%',
-    paddingVertical: 30,
+    borderRadius: 30,
     backgroundColor: 'rgba(5, 207, 224,0.1)',
+    textAlign:'center',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
   },
   button: {
     width: screenWidth * 0.12,
