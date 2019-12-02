@@ -1,6 +1,7 @@
-'use strict';
 import React, {useState, useEffect} from 'react';
-import {Alert, StyleSheet, TouchableHighlight, View, Image} from 'react-native';
+import {Alert, StyleSheet, TouchableHighlight, View, Image, Text} from 'react-native';
+
+import color from '../../styles/colors';
 
 import TouchID from 'react-native-touch-id';
 
@@ -21,7 +22,7 @@ function authenticate() {
     });
 }
 
-export default function FingerPrint() {
+export default function FingerPrintLogin() {
   const [biometryType, setBiometryType] = useState(null);
 
   useEffect(
@@ -43,6 +44,7 @@ export default function FingerPrint() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Clique para fazer o Login</Text>
       <TouchableHighlight
         underlayColor="rgba(5, 207, 224,0.1)"
         onPress={() => clickHandler()}
@@ -58,10 +60,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   button: {
     width: 100,
     height: 100,
+  },
+  text: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: color.primary,
+    textAlign: 'center',
+    marginBottom: 30,
   },
 });

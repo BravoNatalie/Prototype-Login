@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  Headers,
 } from 'react-native';
 
 import componentStyle from './styles';
@@ -125,6 +124,7 @@ function TextAnswer(props) {
       <TextInput
         style={componentStyle.inputAnswer}
         autoCorrect={false}
+        multiline={true}
         placeholder={'Digite aqui...'}
         placeholderTextColor="rgba(5, 207, 224,0.4)"
         onChangeText={props.setValue}
@@ -157,7 +157,7 @@ export default function QuizLogin() {
 
   useEffect(() => requestQuestions(), []);
 
-  const addr = '10.23.10.59';
+  const addr = '10.23.96.4';
 
   /*  function initLogin() {
     const uri = 'http://10.23.10.45:8000/api/auth/customers/login';
@@ -196,7 +196,7 @@ export default function QuizLogin() {
     }
 
     const uri = `http://${addr}:8000/api/auth/quiz/login`;
-
+    console.log(text);
     const request = {
       method: 'POST',
       body: JSON.stringify({
@@ -270,7 +270,12 @@ export default function QuizLogin() {
             </Animatable.View>
           ),
       )}
-      {activeQuestionIndex == questionsLength ? <Text>confirmar</Text> : null}
+      {activeQuestionIndex == questionsLength ? (
+        <Animatable.View ref={viewRef} style={componentStyle.quizContainer}>
+          <Text style={componentStyle.questionText}>Você é Fulano?</Text>
+          <YesNoAnswer />
+        </Animatable.View>
+      ) : null}
     </>
   );
 }

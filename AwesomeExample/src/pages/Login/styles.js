@@ -1,6 +1,11 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import color from '../../styles/colors';
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -16,16 +21,16 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   loginHeader: {
-    width: screenWidth * 0.25,
+    width: wp('25%'),
   },
   logo: {
     flex: 1,
-    width: screenWidth * 0.8,
+    width: wp('80%'),
   },
   icon: {
     flex: 1,
-    width: screenWidth * 0.14,
-    bottom: '-15%',
+    width: wp('14%'),
+    bottom: hp('-6.5%'),
   },
   textContainer: {
     flex: 0.538,
@@ -36,44 +41,44 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginTop: '15%',
-    marginHorizontal: '15%',
+    marginTop: hp('8%'),
+    marginHorizontal: wp('15%'),
   },
   questionText: {
     fontFamily: 'Lato-Regular',
-    fontSize: 20,
+    fontSize: hp('3%'),
     fontWeight: 'bold',
     color: color.primary,
     textAlign: 'center',
   },
   inputAnswer: {
-    marginTop: '25%',
+    marginTop: hp('10%'),
     fontFamily: 'Lato-Regular',
-    fontSize: 15,
-    width: screenWidth * 0.8,
+    fontSize: hp('2.2%'),
+    width: wp('80%'),
     color: color.primary,
     borderRadius: 30,
     backgroundColor: 'rgba(5, 207, 224,0.1)',
-    textAlign:'center',
+    textAlign: 'center',
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
   button: {
-    width: screenWidth * 0.12,
+    width: wp('12%'),
     marginHorizontal: 15,
   },
   multipleChoiseButtonImage: {
-    width: screenWidth * 0.8,
+    width: wp('80%'),
   },
   multipleChoiseContainer: {
-    width: '100%',
-    marginTop: '7%',
+    width: wp('100%'),
+    marginTop: wp('7%'),
   },
   multipleChoiseView: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: screenWidth * 0.9,
+    width: wp('90%'),
   },
   multipleChoiseButtonA: {
     alignItems: 'center',
