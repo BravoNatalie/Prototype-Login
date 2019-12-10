@@ -11,10 +11,10 @@ import {
 import componentStyle from './styles';
 import color from '../../styles/colors';
 
-import QuizLogin from './quizLogin';
+import Quiz from './quiz';
 import FingerPrintLogin from '../Teste/fingerprintLogin';
 
-const Login = () => (
+const SignUp = () => (
   <View style={{flex: 1}}>
     <KeyboardAvoidingView
       style={componentStyle.container}
@@ -41,11 +41,11 @@ const Login = () => (
         />
       </ImageBackground>
       <View style={componentStyle.textContainer}>
-        <QuizLogin />
+        <Quiz />
         {/*  <FingerPrintLogin /> */}
       </View>
     </KeyboardAvoidingView>
   </View>
 );
 
-export default Login;
+export default SignUp;
